@@ -1,0 +1,85 @@
+/* ============================================================
+   NEXUS Creative Lab — design tokens (F002)
+   Fonte única da verdade para cores, tipografia, espaçamento,
+   raio, sombra e camadas z. Baseado em docs/DESIGN.md.
+   Nenhuma página deve hard-codar valores quando um token existe.
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* --- Paleta (docs/DESIGN.md) --- */
+  --color-bg: #0b0c10;
+  --color-surface: #1f2833;
+  --color-surface-elevated: #26303d;
+  --color-text: #ffffff;
+  --color-text-muted: #c5c6c7;
+  --color-accent: #45a29e;
+  --color-accent-vibrant: #66fcf1;
+
+  /* --- Semânticos derivados --- */
+  --color-overlay-soft: rgba(255, 255, 255, 0.05);
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+  --color-border-accent-soft: rgba(102, 252, 241, 0.28);
+  --color-text-faint: rgba(197, 198, 199, 0.72);
+  --color-cta-ink: #062022; /* texto sobre --color-accent-vibrant (AA) */
+  --color-on-accent: #0b2e2c; /* texto sobre --color-accent */
+  --color-danger: #ff8590; /* feedback de erro (contrastado sobre dark) */
+
+  /* --- Tipografia (docs/DESIGN.md) --- */
+  --font-display: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Syne',
+    system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', -apple-system, 'Segoe UI', Roboto,
+    sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  /* --- Espaçamento (escala de 4px) --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* --- Raio (sistema único, escala consistente) --- */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-pill: 999px;
+
+  /* --- Sombras (matizadas, nunca preto puro) --- */
+  --shadow-card: 0 10px 30px rgba(6, 8, 12, 0.45);
+  --shadow-cta: 0 6px 18px rgba(102, 252, 241, 0.22);
+
+  /* --- Layout --- */
+  --container-max: 76.5rem; /* 1224px */
+  --header-h: 4.5rem;
+
+  /* --- Camadas z (documentadas por contexto) --- */
+  --z-header: 40; /* header/nav */
+  --z-modal: 50; /* menu mobile, overlays de diálogo */
+  --z-skip: 60; /* skip link */
+  --z-grain: 70; /* ruído de tela (pointer-events: none) */
+
+  /* --- Movimento --- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 0.15s;
+  --duration-base: 0.25s;
+  --duration-slow: 0.4s;
+}

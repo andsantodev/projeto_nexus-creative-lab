@@ -1,0 +1,23 @@
+import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vitest/config'
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  build: {
+    target: 'es2022',
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    include: ['src/**/*.spec.js'],
+    setupFiles: ['src/__tests__/setup.js'],
+    testTimeout: 15000,
+    hookTimeout: 15000,
+  },
+})

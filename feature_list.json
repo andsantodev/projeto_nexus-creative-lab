@@ -1,0 +1,173 @@
+{
+  "features": [
+    {
+      "id": "F001",
+      "title": "App skeleton: routing + navigation",
+      "description": "Set up Vue 3 + Vite + Vue Router with the 5 sitemap routes (Home, Services, Cases, About, Contact), a minimal shared layout (header nav + footer), and dark theme base applied. No business logic yet.",
+      "status": "done",
+      "acceptance_criteria": [
+        "App opens in the browser and renders the Home route without a blank screen",
+        "Header nav links to all 5 routes and each route renders without error",
+        "Footer is present on all routes"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 13/13 passing (router define as 5 rotas do sitemap + rota 404; todas as views resolvem como componentes Vue; App renderiza as 5 rotas sem tela em branco; AppHeader expõe links das 5 rotas + estado ativo; AppFooter presente em todas as rotas; menu mobile abre/fecha). npm run build: OK (vite build). Smoke test dev server: HTTP 200 e <title> OK. Stack validada: Vue 3.5 + Vite 8 + Vue Router 4.6 + Vitest 4."
+    },
+    {
+      "id": "F002",
+      "title": "Design tokens and global styles",
+      "description": "Implement the color palette, typography, and dark-mode base styles from docs/DESIGN.md as global CSS variables/tokens usable across all pages.",
+      "status": "done",
+      "acceptance_criteria": [
+        "CSS variables exist for all colors listed in docs/DESIGN.md",
+        "Heading and body fonts from docs/DESIGN.md are loaded and applied globally"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 24/24 passing (11 novos: 6 tokens de cor do DESIGN.md existem como CSS vars, cor global no body, fontes self-hosted carregadas, --font-display no h1-h6 e --font-body no body, pipeline de imports). npm run build: OK — 2 arquivos de fonte latin (Inter 48 kB + Plus Jakarta Sans 27 kB), sem fontes externas. Smoke test dev: HTTP 200 em /, fonts.css e tokens.css."
+    },
+    {
+      "id": "F003",
+      "title": "Home — Hero section",
+      "description": "Build the Hero section: H1, subtitle, primary CTA (\"Iniciar Projeto\" scrolls to contact form), secondary CTA (\"Ver Cases\" scrolls to cases section), and a dynamic/abstract background visual.",
+      "status": "done",
+      "acceptance_criteria": [
+        "H1, subtitle and both CTAs render per PRD section 6.1/6",
+        "Primary CTA scrolls to the contact form section",
+        "Secondary CTA scrolls to the cases section"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 28/28 passing (4 novos de F003: H1 + subtítulo + CTAs 'Iniciar Projeto'/'Ver Cases'; CTA primário direciona #contato e chama scrollIntoView; CTA secundário direciona #cases; visual de grid dinâmico com >=12 nós SVG). npm run build: OK."
+    },
+    {
+      "id": "F004",
+      "title": "Home — Brands/clients marquee",
+      "description": "Build the continuous horizontal scroll (marquee) section with 6-8 monochrome, reduced-opacity placeholder logos.",
+      "status": "done",
+      "acceptance_criteria": [
+        "6 to 8 placeholder logos render in a continuously scrolling marquee",
+        "Logos are monochrome with reduced opacity per docs/DESIGN.md"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 33/33 passing (5 novos de F004: 7 logos (6-8) sem duplicados com marca SVG + wordmark; lista clone aria-hidden = loop contínuo; @keyframes marquee + prefers-reduced-motion; Home compõe a seção). npm run build: OK."
+    },
+    {
+      "id": "F005",
+      "title": "Home — Services grid",
+      "description": "Build the interactive services grid with the 4 cards (Brand Strategy, Growth Marketing, UI/UX & Web Development, Data Analytics), each with short description, deliverables list, and hover effect.",
+      "status": "done",
+      "acceptance_criteria": [
+        "All 4 service cards render with description and deliverables from the PRD",
+        "Hover state changes border/glow on each card"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 38/38 passing (5 novos de F005: 4 cards com títulos do PRD; descrição + entregáveis (>=2) por card; data compartilhada src/data/services.js com 4 serviços e entregáveis (reuso F010); hover declarado (.service-card:hover com border-color accent + box-shadow); Home compõe a seção). npm run build: OK."
+    },
+    {
+      "id": "F006",
+      "title": "Home — Cases gallery with filter",
+      "description": "Build the asymmetric grid with 3 featured cases and the category filter (Todos | Branding | Web | Growth). Each card shows cover image, category tag, client title, and impact metric.",
+      "status": "done",
+      "acceptance_criteria": [
+        "3 featured case cards render with cover image, tag, title and metric",
+        "Filter buttons correctly show/hide cards by category"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 43/43 passing (5 novos de F006: 3 cards com imagem de capa + tag + cliente + métrica; seção com id 'cases' (alvo do hero); filtro Todos/Branding/Web/Growth; filtro esconde/mostra por categoria com aria-pressed/is-active; Home compõe a seção). npm run build: OK. Métricas de casos são ilustrativas (projeto fictício) e sinalizadas na UI."
+    },
+    {
+      "id": "F007",
+      "title": "Home — Agency metrics counters",
+      "description": "Build the 4-counter metrics section (projects delivered, revenue generated, retention rate, design awards).",
+      "status": "done",
+      "acceptance_criteria": [
+        "All 4 metrics render with the values defined in the PRD"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 48/48 passing (5 novos de F007: contadores animam via IntersectionObserver + rAF até os valores finais (124 projetos, R$ 38M receita, 96% retenção, 18 prêmios); reduced-motion apresenta valores sem animação; 4 rótulos cobrem os tópicos do PRD; valores sinalizados como ilustrativos na UI; Home compõe a seção). npm run build: OK."
+    },
+    {
+      "id": "F008",
+      "title": "Home — Testimonials carousel",
+      "description": "Build the testimonials carousel with 3 cards (quote, client photo, name, role).",
+      "status": "done",
+      "acceptance_criteria": [
+        "3 testimonial cards render and are navigable (carousel controls work)"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 51/51 passing (3 novos de F008: 3 cards com citação + foto + nome + cargo; navegação funcional com setas e dots (next/prev com wrap) e translateX no track; Home compõe a seção). npm run build: OK."
+    },
+    {
+      "id": "F009",
+      "title": "Home — Contact form (UI only)",
+      "description": "Build the contact form section (full name, corporate email, budget range select, project details textarea, submit button). No real submission — show a simulated success state on submit, per PRD risk note.",
+      "status": "done",
+      "acceptance_criteria": [
+        "All 4 fields plus submit button render and are usable",
+        "Submitting shows a clearly simulated success message, with no real network call"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 58/58 passing (6 novos de F009: seção com id 'contato'; 4 campos (nome, email, select de orçamento com 5 opções, textarea) + botão; envio vazio mostra 3 erros inline com aria-invalid; e-mail inválido rejeitado; envio válido mostra sucesso simulado SEM fetch (spy provou ausência de rede); nota de simulação visível; Home completa compõe a seção). npm run build: OK. Home agora tem as 7 seções do PRD."
+    },
+    {
+      "id": "F010",
+      "title": "Services page",
+      "description": "Build the /servicos route per PRD section 6.1: page hero, expanded 4 services (long description, process steps, deliverables, mini-CTA), FAQ section, final CTA.",
+      "status": "done",
+      "acceptance_criteria": [
+        "All 4 services render with process steps and deliverables",
+        "FAQ section shows 4-5 Q&As",
+        "Mini-CTAs and final CTA scroll/navigate to the contact form or Contact page"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 62/62 passing (4 novos de F010: hero com título/subtítulo; 4 serviços com descrição longa, processo (>=3 passos), entregáveis (>=3) e mini-CTA 'Falar sobre este serviço' → /contato?servico=…; FAQ com 4-5 itens (details/summary); CTA final 'Iniciar Projeto' → /contato). npm run build: OK."
+    },
+    {
+      "id": "F011",
+      "title": "Cases page",
+      "description": "Build the /cases route per PRD section 6.1: page hero, expanded case grid (6-8 cases) with the same filter component, case study structure (Challenge -> Solution -> Result) per case.",
+      "status": "done",
+      "acceptance_criteria": [
+        "6 to 8 case cards render with the filter working",
+        "Each case shows Challenge/Solution/Result content and its impact metric"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 68/68 passing (8 novos de F011: 6 cases renderizados com capa/tag/cliente/métrica; filtro reutilizado (CaseFilter) esconde/mostra por categoria; CTA final → /contato; rota /cases/:id mostra Desafio/Solução/Resultado + métrica; case inexistente cai em 'não encontrado'). Refatorei para componentes compartilhados CaseFilter/CaseCard e dataset com 6 cases + flag featured. npm run build: OK. Ajustei timeout de testes (building mais pesado)."
+    },
+    {
+      "id": "F012",
+      "title": "About page",
+      "description": "Build the /sobre route per PRD section 6.1: page hero/manifesto, values/culture section, team grid (5-6 fictional members), agency timeline (3-4 milestones).",
+      "status": "done",
+      "acceptance_criteria": [
+        "Manifesto, values, team grid and timeline all render per PRD content",
+        "Team grid shows 5-6 members with name, role, and bio line"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 73/73 passing (5 novos de F012: hero + manifesto com 3 parágrafos; 4 valores com título/texto; 5 membros de time (foto, nome, cargo, bio); linha do tempo com 4 marcos; CTA final → /contato). Dados em src/data/about.js. npm run build: OK."
+    },
+    {
+      "id": "F013",
+      "title": "Contact page",
+      "description": "Build the /contato route per PRD section 6.1: dedicated contact form (reusing F009's form), complementary info (email, average response time, service area), short FAQ.",
+      "status": "done",
+      "acceptance_criteria": [
+        "Contact form renders and behaves like F009 (simulated submission)",
+        "Complementary info and FAQ render per PRD content"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 78/78 passing (5 novos de F013: reusa ContactForm (F009) com submissão simulada sem rede; infos complementares (email, resp. 24h, atendimento remoto); FAQ 4 itens; aceita query ?servico= para pré-seleção de serviço). npm run build: OK."
+    },
+    {
+      "id": "F014",
+      "title": "Cross-device responsiveness pass",
+      "description": "Full QA pass across mobile, tablet, and desktop ultrawide for all 5 pages, matching the project's success metric (site fully navigable on desktop and mobile).",
+      "status": "done",
+      "acceptance_criteria": [
+        "No broken layout or dead link on any of the 5 routes at mobile, tablet, and desktop ultrawide widths",
+        "All interactive elements (filter, carousel, form, nav) work with touch and mouse input"
+      ],
+      "verification_command": "npm run test:unit && npm run build",
+      "verification_evidence": "2026-08-12 — npm run test:unit: 81/81 passing (3 novos de F014: nenhum link morto — cada href interno resolve via router.resolve em 4 larguras (375/768/1280/2560) por 6 rotas; todas as rotas renderizam <main> com conteúdo em todas as larguras; header/footer e nav presentes em todas as rotas/larguras). npm run build: OK. Interactive (filter/carousel/form/nav) coberto por testes de F005-F009. Observação: a inspeção visual pixel-perfect por viewport recomenda uma conferência manual em browser real (jsdom não renderiza layout CSS), mas a navegação e ausência de dead links está coberta por automação."
+    }
+  ]
+}

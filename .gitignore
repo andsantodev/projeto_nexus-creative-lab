@@ -1,0 +1,33 @@
+node_modules
+dist
+dist-ssr
+coverage
+*.local
+
+# agent skills (vendored, third-party)
+.agents/
+
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# editor
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# os
+Thumbs.db

@@ -1,17 +1,17 @@
 # Session Handoff
 
-**Estado atual:** ✅ **Roadmap completo (F001 a F014) + rodada de correções de layout/navegação aplicadas.**
+**Estado atual:** ✅ **Publicado no GitHub** — `https://github.com/andsantodev/projeto_nexus-creative-lab` (branch `main`).
 
-Site institucional NEXUS Creative Lab (MVP) navegável: 5 páginas do sitemap + rota de case study (`/cases/:id`) + 404. Home com as 7 seções, páginas Serviços/Cases/Sobre/Contato ricas.
+Site institucional NEXUS Creative Lab (MVP) navegável: 5 páginas do sitemap + rota de case study (`/cases/:id`) + 404. Home com as 7 seções, páginas Serviços/Cases/Sobre/Contato ricas. README (PT-BR) e prints de tela em `docs/images/`.
 
-**Última rodada:** Revisão de bugs — navegação via `<Transition out-in>` (raiz única em `HomeView`/`CaseDetailView`), empilhamento dos cases da Home em mobile/tablet (`HomeCases` spans só em ≥1024px), cover de case detail em proporção natural (`height: auto`, sem 21:9/object-fit morto), e fotos reais do time em `src/data/about.js` (randomuser.me).
+**Última rodada:** Publicação no GitHub — README de portfólio (narrativa da skill `harness-engineering-prd`), 7 prints desktop via `scripts/screenshots.mjs` (Chrome headless + CDP, sem dependências novas), higiene de repo (`.gitignore` com `.agents/` + chaves, `package.json` renomeado, `init.sh` limpo).
 
-**Próxima feature sugerida:** nenhuma (todas `done`) — conferência manual visual dos ajustes em navegador real.
+**Próxima feature sugerida:** nenhuma (roadmap completo e publicado). Complementar no GitHub a descrição do repo e os topics.
 
 **Bloqueios conhecidos:** nenhum funcional.
 
 **Pendências (não-bloqueantes, sugestões):**
-- Conferência visual em navegador real (mobile/tablet) para validar o empilhamento dos cases e o aspect do case detail (jsdom não renderiza layout CSS).
+- Complementar descrição/topics do repositório no GitHub.
 - Configurar ESLint (`npm run lint` marcado `# confirm` até ser validado).
 - Opcional: reduzir bundle de ícones Phosphor (imports por componente em vez do pacote inteiro).
 
@@ -20,4 +20,5 @@ Site institucional NEXUS Creative Lab (MVP) navegável: 5 páginas do sitemap + 
 - `npm run test:unit` — OK (Vitest, **81/81**)
 - `npm run build` — OK
 - `npm run dev` — OK
+- `node scripts/screenshots.mjs` — OK (gera os prints em `docs/images/`)
 - `npm run lint` — pendente (ESLint não configurado)

@@ -2,6 +2,21 @@
 
 <!-- Nova entrada sempre no topo. Nunca apague entradas antigas. -->
 
+## [2026-10-07] — Publicação no GitHub (README + prints de tela)
+- Feito:
+  - **Repositório publicado**: `https://github.com/andsantodev/projeto_nexus-creative-lab` (branch `main`, commit inicial `chore: initial commit — NEXUS Creative Lab MVP`).
+  - **README.md (PT-BR)**: narrativa de portfólio centrada na validação da skill `harness-engineering-prd` (entrevista → PRD → pacote Harness → execução feature a feature), screenshots, funcionalidades, stack, como rodar, estrutura, tabela dos artefatos Harness, qualidade, limitações e créditos.
+  - **Prints de tela (desktop)**: `scripts/screenshots.mjs` (Chrome headless + CDP via WebSocket nativo do Node, sem dependências novas) gera 7 imagens em `docs/images/` — home-hero, home-full, servicos, cases, case-detail, sobre, contato. Emula `prefers-reduced-motion` e rola a página para carregar imagens `loading="lazy"` antes de capturar.
+  - **Higiene de repo**: `.gitignore` passou a ignorar `.agents/` (skills vendorizadas) e `*.pem`/`*.key`/`*.p12`; `package.json` renomeado para `nexus-creative-lab`; `init.sh` sem os marcadores `# confirm` e sem o passo de lint inexistente.
+- Verificado (comando + resultado):
+  - `npm run test:unit` → **81/81 passando**; `npm run build` → OK (antes da publicação).
+  - `npm audit --omit=dev` → 0 vulnerabilidades; scan de segredos (code-review-lite) → nenhum segredo exposto; sem `.env` rastreado; sem `v-html`.
+  - `git push -u origin main` → OK (branch `main` rastreando `origin/main`).
+  - Prints conferidos visualmente (hero, full pages e imagens externas renderizadas).
+- Pendências / quebrado:
+  - `npm run lint` segue pendente (ESLint não configurado).
+- Próximo passo sugerido: complementar no GitHub a descrição do repo e os topics (`vue`, `vite`, `vitest`, `portfolio`, `ai-agents`, `harness-engineering`).
+
 ## [2026-08-12] — Revisão de bugs (navegação, Cases Home, cover CaseDetail, fotos do time)
 - Feito:
   - **Bug de navegação (correção da causa raiz)**: o `<Transition mode="out-in">` no `App.vue` exige view de **raiz única**. `HomeView.vue` (7 componentes soltos) e `CaseDetailView.vue` (`<article v-if>` + `<section v-else>`) eram *fragmentos*, travando o *leave* e impedindo a próxima página de montar — só carregava com hard refresh. Envolvi ambos em um único elemento raiz (`.home-view`/`<div>` condicional). Reproduzido/configurado em memória com Vue real antes da correção.
